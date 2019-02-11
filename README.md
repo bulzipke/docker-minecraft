@@ -5,7 +5,8 @@ This image automate run official server binary.
 
 # How to use this Image
 ```console
-$ docker run -d -p 19132:19132/udp \
+$ docker run \
 -v /your_path:/data \
+-p 19132:19132/udp \
 -d bulzipke/minecraft
 ```
