@@ -1,24 +1,13 @@
-FROM alpine:edge
+FROM ubuntu:latest
 MAINTAINER bulzipke <bulzipke@naver.com>
 
-RUN apk update && apk upgrade
-RUN apk add curl
-# zlib libstdc++
-# libssl1.1
+RUN apt-get update
+RUN apt-get install -y curl unzip
 
-RUN curl -OL https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.27-r0/glibc-2.27-r0.apk
-RUN apk add --allow-untrusted *.apk
-RUN rm *.apk
+ENV LD_LIBRARY_PATH=.
 
-RUN URL=$(curl -s https://minecraft.net/en-us/download/server/bedrock/ | grep bin-linux | sed "s/.*href=['\"]\([^'\"]*\)['\"].*/\1/g"); curl -O $URL
-RUN mkdir data
-RUN unzip *.zip -d data
-RUN rm *.zip
-
-ENV LD_LIBRARY_PATH=.:/usr/lib:/lib
-WORKDIR /data
-# CMD ./bedrock_server
+COPY scripts/* /root/
+CMD ["/root/setup.sh"]
 
 EXPOSE 19132/udp
-
 
