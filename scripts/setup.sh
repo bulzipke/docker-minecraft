@@ -11,7 +11,7 @@ do
   fi
 done
 
-unzip -s -o *.zip -d data
+unzip -q -o *.zip -d data
 rm *.zip
 
 for prev_file in "${prev_files[@]}"
