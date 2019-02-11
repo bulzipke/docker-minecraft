@@ -7,7 +7,7 @@ prev_files=("server.properties" "permissions.json" "valid_known_packs.json" "whi
 for prev_file in "${prev_files[@]}"
 do
   if [ -f "data/$prev_file" ]; then
-    mv "data/$prev_file" .
+    cp "data/$prev_file" .
   fi
 done
 
