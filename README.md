@@ -1,2 +1,2 @@
 # docker-minecraft
-Minecraft Bedrock Server image based on Alpine Linux 
+Minecraft Bedrock Server image based on Alpine Linux (not yet)
