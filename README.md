@@ -1,5 +1,6 @@
 # docker-minecraft
 Minecraft Bedrock Server image based on Alpine Linux (not yet)
+
 This image automate run official server binary.
 
 # How to use this Image
