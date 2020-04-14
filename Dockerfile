@@ -1,12 +1,15 @@
 FROM ubuntu:latest
 MAINTAINER bulzipke <bulzipke@naver.com>
 
-RUN apt-get update && apt-get install -y curl unzip
-
+ENV UID=1000
+ENV GID=1000
 ENV LD_LIBRARY_PATH=.
 
-COPY scripts/* /root/
-CMD ["/root/setup.sh"]
+RUN sudo apt-get update && apt-get install -y curl unzip
+
+RUN mkdir /work
+COPY scripts/* /work/
+CMD ["/work/setup.sh"]
 
 EXPOSE 19132/udp
 
