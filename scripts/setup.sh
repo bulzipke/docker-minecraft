@@ -18,6 +18,7 @@ for prev_file in "${prev_files[@]}"
 do
   if [ -f "$prev_file" ]; then
     mv $prev_file "data/"
+    chown abc:abc "data/$prev_file"
   fi
 done
 
