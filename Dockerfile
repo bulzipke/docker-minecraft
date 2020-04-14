@@ -1,11 +1,9 @@
 FROM ubuntu:latest
 MAINTAINER bulzipke <bulzipke@naver.com>
 
-ENV UID=1000
-ENV GID=1000
 ENV LD_LIBRARY_PATH=.
 
-RUN sudo apt-get update && apt-get install -y curl unzip
+RUN apt-get update && apt-get install -y curl unzip
 
 RUN mkdir /work
 COPY scripts/* /work/
