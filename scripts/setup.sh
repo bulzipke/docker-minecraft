@@ -22,5 +22,5 @@ do
 done
 
 cd data
-exec s6-setuidgid abc bedrock_server
+exec s6-setuidgid abc ./bedrock_server
 
