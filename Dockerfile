@@ -1,13 +1,18 @@
 FROM ubuntu:latest
 MAINTAINER bulzipke <bulzipke@naver.com>
 
+ENV UID=1000
+ENV GID=1000
 ENV LD_LIBRARY_PATH=.
 
 RUN apt-get update && apt-get install -y curl unzip
+RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-overlay/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]') && \
+	curl -o s6-overlay.tar.gz -L "https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-amd64.tar.gz" && \
+	tar xfz s6-overlay.tar.gz -C / && \ 
+	rm -rf s6-overlay.tar.gz
 
-RUN mkdir /work
-COPY scripts/* /work/
-CMD ["/work/setup.sh"]
+COPY scripts/* /root/
+ENTRYPOINT ["/init"]
+CMD ["/root/setup.sh"]
 
 EXPOSE 19132/udp
-
