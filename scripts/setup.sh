@@ -11,7 +11,7 @@ do
   fi
 done
 
-unzip -q -o *.zip -d data
+s6-setuidgid abc unzip -q -o *.zip -d data
 rm *.zip
 
 for prev_file in "${prev_files[@]}"
@@ -22,5 +22,5 @@ do
 done
 
 cd data
-./bedrock_server
+exec s6-setuidgid abc bedrock_server
 
