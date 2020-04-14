@@ -11,8 +11,10 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	tar xfz s6-overlay.tar.gz -C / && \ 
 	rm -rf s6-overlay.tar.gz
 
-COPY scripts/* /root/
+COPY rootfs /
 ENTRYPOINT ["/init"]
+
+COPY scripts/* /root/
 CMD ["/root/setup.sh"]
 
 EXPOSE 19132/udp
