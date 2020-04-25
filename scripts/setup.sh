@@ -8,6 +8,7 @@ for prev_file in "${prev_files[@]}"
 do
   if [ -f "data/$prev_file" ]; then
     cp "data/$prev_file" .
+    pwd
   fi
 done
 
@@ -19,9 +20,11 @@ do
   if [ -f "$prev_file" ]; then
     mv $prev_file "data/"
     chown abc:abc "data/$prev_file"
+    pwd
   fi
 done
 
 cd data
-exec s6-setuidgid abc ./bedrock_server
-
+# exec s6-setuidgid abc ./bedrock_server
+pwd
+s6-setuidgid abc ./bedrock_server
