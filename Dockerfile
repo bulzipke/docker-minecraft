@@ -14,7 +14,9 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 COPY rootfs /
 ENTRYPOINT ["/init"]
 
+RUN pwd
 COPY scripts /root/
+RUN ls -l /root
 CMD ["/root/setup.sh"]
 
 EXPOSE 19132/udp
