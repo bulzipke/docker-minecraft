@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv sh
 
-mkdir -p /data
-chown -R abc:abc /data
+mkdir -p /data /logs
+chown -R abc:abc /data /logs
