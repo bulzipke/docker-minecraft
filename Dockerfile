@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:latest
 MAINTAINER bulzipke <bulzipke@naver.com>
 
 ENV UID=1000
@@ -23,7 +23,7 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	rm -rf /var/lib/apt/lists/*
 
 COPY rootfs /
-ENTRYPOINT ["/init"]
+# ENTRYPOINT ["/init"]
 
 COPY scripts /root/
 CMD ["/root/setup.sh"]
