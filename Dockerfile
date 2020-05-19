@@ -15,7 +15,9 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	curl -o papyruscs.zip -L ${PAPYRUSCS} && \
 	unzip papyruscs.zip -d /usr/local/bin && \
 	chmod +x /usr/local/bin/PapyrusCs && \
-	rm -rf papyruscs.zip
+	rm -rf papyruscs.zip && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 
 COPY rootfs /
 ENTRYPOINT ["/init"]
