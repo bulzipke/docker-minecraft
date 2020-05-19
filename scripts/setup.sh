@@ -25,4 +25,4 @@ do
 done
 
 cd data
-exec s6-setuidgid abc ./bedrock_server > /logs/minecraft.log 2>&1
+exec s6-setuidgid abc ./bedrock_server >> /logs/minecraft.log 2>&1
