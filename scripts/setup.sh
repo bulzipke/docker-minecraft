@@ -24,5 +24,9 @@ do
   fi
 done
 
+crontab /etc/cron.d/root && \
+service cron start
+nginx
+
 cd data
 exec s6-setuidgid abc ./bedrock_server >> /logs/minecraft.log 2>&1

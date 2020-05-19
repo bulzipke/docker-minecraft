@@ -4,6 +4,7 @@ MAINTAINER bulzipke <bulzipke@naver.com>
 ENV UID=1000
 ENV GID=1000
 ENV LD_LIBRARY_PATH=.
+ENV RENDER_PERIOD=15
 
 RUN apt-get update && apt-get install -y curl unzip nginx libgdiplus cron
 RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-overlay/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]') && \
@@ -16,6 +17,8 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	unzip papyruscs.zip -d /usr/local/bin && \
 	chmod +x /usr/local/bin/PapyrusCs && \
 	rm -rf papyruscs.zip && \
+	sed -i 's/root \/var\/www\/html/root \/data\/www\/map/g' /etc/nginx/sites-available/default && \
+	echo "*/${RENDER_PERIOD} * * * * /root/generate_map.sh >> /logs/generate_map.log 2>&1" > /etc/cron.d/root && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
