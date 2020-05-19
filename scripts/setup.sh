@@ -1,4 +1,7 @@
 #! /bin/bash
+echo aaaa
+top
+echo bbbb
 
 URL=$(curl -sL https://minecraft.net/en-us/download/server/bedrock/ | grep bin-linux | sed "s/.*href=['\"]\([^'\"]*\)['\"].*/\1/g"); curl -O $URL
 
