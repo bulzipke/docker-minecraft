@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:latest
 MAINTAINER bulzipke <bulzipke@naver.com>
 
 ENV UID=1000
