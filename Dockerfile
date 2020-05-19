@@ -18,7 +18,6 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	chmod +x /usr/local/bin/PapyrusCs && \
 	rm -rf papyruscs.zip && \
 	sed -i 's/root \/var\/www\/html/root \/data\/www\/map/g' /etc/nginx/sites-available/default && \
-	echo "*/${RENDER_PERIOD} * * * * /root/generate_map.sh >> /logs/generate_map.log 2>&1" > /etc/cron.d/root && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
