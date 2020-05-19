@@ -21,7 +21,7 @@ echo GENERATING MAP
 WORLDS=(0 1 2)
 for WORLD in "${WORLDS[@]}"
 do
-  s6-setuidgid abc PapyrusCs --world=/tmp/world/db --output=/data/www --htmlfile=index.html --threads 16 -f png -q -1 -d $WORLD >> /logs/world_$WORLD.log 2>&1
+  s6-setuidgid abc /usr/local/bin/PapyrusCs --world=/tmp/world/db --output=/data/www --htmlfile=index.html --threads 16 -f png -q -1 -d $WORLD >> /logs/world_$WORLD.log 2>&1
 done
 
 echo DONE WITH MAP GENERATION
