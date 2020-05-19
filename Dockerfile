@@ -29,3 +29,4 @@ COPY scripts /root/
 CMD ["/root/setup.sh"]
 
 EXPOSE 19132/udp
+EXPOSE 80/tcp
