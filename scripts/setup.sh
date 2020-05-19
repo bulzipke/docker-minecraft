@@ -24,7 +24,7 @@ do
   fi
 done
 
-crontab /etc/cron.d/root && \
+crontab /etc/cron.d/root
 service cron start
 nginx
 
