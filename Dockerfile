@@ -18,9 +18,11 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	rm -rf papyruscs.zip
 
 COPY rootfs /
+RUN chmod +x /init
 ENTRYPOINT ["/init"]
 
 COPY scripts /root/
+RUN chmod +x /root/setup.sh
 CMD ["/root/setup.sh"]
 
 EXPOSE 19132/udp
