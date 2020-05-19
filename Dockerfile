@@ -10,7 +10,10 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	curl -o s6-overlay.tar.gz -L "https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-amd64.tar.gz" && \
 	tar xfz s6-overlay.tar.gz -C / --exclude="./bin" && \
 	tar xfz s6-overlay.tar.gz -C /usr ./bin && \
-	rm -rf s6-overlay.tar.gz
+	rm -rf s6-overlay.tar.gz && \
+	&& \
+	PAPYRUSCS=$(curl -sX GET "https://api.github.com/repos/mjungnickel18/papyruscs/releases/latest" | grep browser_download_url | grep linux64 | awk '{print $ 2;}') && \
+	curl -o papyruscs.zip -L ${PAPYRUSCS}
 
 COPY rootfs /
 ENTRYPOINT ["/init"]
