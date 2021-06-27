@@ -12,7 +12,7 @@ RUN S6_VERSION=$(curl -sX GET "https://api.github.com/repos/just-containers/s6-o
 	tar xfz s6-overlay.tar.gz -C / && \
 	tar xfz s6-overlay.tar.gz -C /usr ./bin && \
 	rm -rf s6-overlay.tar.gz && \
-	PAPYRUSCS=$(curl -sX GET "https://api.github.com/repos/mjungnickel18/papyruscs/releases/latest" | grep browser_download_url | grep linux64 | awk '{print $ 2;}' | sed s/\"//g) && \
+	PAPYRUSCS=$(curl -sX GET "https://api.github.com/repos/papyrus-mc/papyruscs/releases/latest" | grep browser_download_url | grep linux64 | awk '{print $ 2;}' | sed s/\"//g) && \
 	curl -o papyruscs.zip -L ${PAPYRUSCS} && \
 	unzip papyruscs.zip -d /usr/local/bin && \
 	chmod +x /usr/local/bin/PapyrusCs && \
