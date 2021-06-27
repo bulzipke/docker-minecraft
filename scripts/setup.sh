@@ -29,4 +29,5 @@ service cron start
 nginx
 
 cd data
+chmod +x bedrock_server
 exec s6-setuidgid abc ./bedrock_server >> /logs/minecraft.log 2>&1
