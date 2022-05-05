@@ -1,6 +1,8 @@
 #!/bin/bash
 
-URL=$(curl -sL https://minecraft.net/en-us/download/server/bedrock/ | grep bin-linux | sed "s/.*href=['\"]\([^'\"]*\)['\"].*/\1/g"); curl -O $URL
+URL=$(curl -sL https://minecraft.net/en-us/download/server/bedrock/ \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'\ | \
+  grep bin-linux | sed "s/.*href=['\"]\([^'\"]*\)['\"].*/\1/g"); curl -O $URL
 
 prev_files=("server.properties" "permissions.json" "valid_known_packs.json" "whitelist.json")
 
