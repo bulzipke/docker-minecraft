@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 mkdir -p /data /logs /data/www
 chown -R abc:abc /data /logs
